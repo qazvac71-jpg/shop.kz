@@ -3,28 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SalesPro KZ - Магазин</title>
+    <title>Shop KZ - Мясо и Электроника</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; }
         .gradient-bg { background: linear-gradient(135deg, #00A651 0%, #0099CC 100%); }
-        .kazakh-pattern { background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300A651' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
         .loading { display: inline-block; width: 20px; height: 20px; border: 3px solid rgba(0,166,81,.3); border-radius: 50%; border-top-color: #00A651; animation: spin 1s ease-in-out infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
-        .lang-btn.active { background: linear-gradient(135deg, #00A651 0%, #0099CC 100%); color: white; transform: scale(1.05); }
-        .lang-btn:not(.active):hover { background-color: #f3f4f6; }
-        .sidebar-item { transition: all 0.3s ease; }
-        .sidebar-item:hover { transform: translateX(5px); }
+        .lang-btn.active { background: linear-gradient(135deg, #00A651 0%, #0099CC 100%); color: white; }
         .product-card { transition: all 0.3s ease; }
         .product-card:hover { transform: scale(1.02); }
-        .animate-fade-in { animation: fadeIn 0.5s ease-in; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .phone-btn { background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 kazakh-pattern">
+<body class="bg-gray-50 text-gray-800">
 
     <!-- Language Switcher -->
     <div class="fixed top-4 right-4 z-50 flex gap-2 bg-white rounded-xl shadow-lg p-1 border border-gray-200">
@@ -44,8 +38,8 @@
                     <i class="fas fa-store text-white text-lg"></i>
                 </div>
                 <div>
-                    <h1 class="font-bold text-xl">SalesPro</h1>
-                    <p class="text-xs text-slate-400">KZ Shop</p>
+                    <h1 class="font-bold text-xl">Shop KZ</h1>
+                    <p class="text-xs text-slate-400">Мясо & Электроника</p>
                 </div>
             </div>
         </div>
@@ -61,6 +55,17 @@
                 <span class="ml-auto bg-red-500 text-xs px-2 py-1 rounded-full" id="cart-count">0</span>
             </button>
         </nav>
+        
+        <!-- Контакты в сайдбаре -->
+        <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-slate-700">
+            <a href="https://wa.me/77089603833" target="_blank" class="phone-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-white mb-2">
+                <i class="fab fa-whatsapp text-xl"></i>
+                <div>
+                    <p class="text-xs opacity-80">WhatsApp</p>
+                    <p class="font-bold">+7 708 960 38 33</p>
+                </div>
+            </a>
+        </div>
     </aside>
 
     <!-- Main Content -->
@@ -71,47 +76,106 @@
                 <div class="flex-1 max-w-2xl mx-4">
                     <div class="relative">
                         <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                        <input type="text" id="search-input" placeholder="Поиск..." class="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:border-emerald-500">
+                        <input type="text" id="search-input" placeholder="Поиск товаров..." class="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:border-emerald-500">
                     </div>
                 </div>
+                <a href="tel:+77089603833" class="phone-btn text-white px-4 py-2 rounded-xl flex items-center gap-2">
+                    <i class="fas fa-phone"></i>
+                    <span class="hidden md:inline">+7 708 960 38 33</span>
+                </a>
             </div>
         </header>
 
-        <!-- Products Section -->
-        <section id="products-section" class="p-6 animate-fade-in">
+        <!-- Dashboard с контактами -->
+        <section id="dashboard-section" class="p-6">
+            <!-- Баннер с контактами -->
+            <div class="gradient-bg rounded-2xl p-6 text-white mb-6 shadow-lg">
+                <div class="flex items-center justify-between flex-wrap gap-4">
+                    <div>
+                        <h2 class="text-2xl font-bold mb-2">Shop KZ</h2>
+                        <p class="opacity-90">Свежее мясо и качественная электроника</p>
+                        <p class="opacity-75 text-sm mt-1">Доставка по всему Казахстану</p>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="https://wa.me/77089603833" target="_blank" class="bg-white text-emerald-600 px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-gray-100 transition">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                            <span>Написать WhatsApp</span>
+                        </a>
+                        <a href="tel:+77089603833" class="bg-emerald-700 text-white px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-emerald-800 transition">
+                            <i class="fas fa-phone"></i>
+                            <span>Позвонить</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-4 pt-4 border-t border-white border-opacity-20">
+                    <p class="font-bold text-lg"><i class="fas fa-phone-alt mr-2"></i>+7 708 960 38 33</p>
+                </div>
+            </div>
+
+            <div id="loading" class="text-center py-8">
+                <div class="loading mb-2"></div>
+                <p class="text-gray-500">Загрузка товаров...</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8" id="stats-container" style="display: none;">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="p-3 bg-emerald-100 rounded-xl"><span class="text-emerald-600 text-xl font-bold">₸</span></div>
+                    </div>
+                    <h3 class="text-gray-500 text-sm mb-1">Выручка сегодня</h3>
+                    <p class="text-2xl font-bold text-gray-800">₸ <span id="revenue-today">0</span></p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="p-3 bg-blue-100 rounded-xl"><i class="fas fa-shopping-bag text-blue-600 text-xl"></i></div>
+                    </div>
+                    <h3 class="text-gray-500 text-sm mb-1">Заказов</h3>
+                    <p class="text-2xl font-bold text-gray-800" id="orders-today">0</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="p-3 bg-red-100 rounded-xl"><i class="fas fa-drumstick-bite text-red-600 text-xl"></i></div>
+                    </div>
+                    <h3 class="text-gray-500 text-sm mb-1">Видов мяса</h3>
+                    <p class="text-2xl font-bold text-gray-800" id="meat-count">0</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="p-3 bg-purple-100 rounded-xl"><i class="fas fa-plug text-purple-600 text-xl"></i></div>
+                    </div>
+                    <h3 class="text-gray-500 text-sm mb-1">Электроники</h3>
+                    <p class="text-2xl font-bold text-gray-800" id="electronics-count">0</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products -->
+        <section id="products-section" class="p-6 hidden">
             <div class="flex items-center justify-between mb-6">
                 <div>
                     <h2 class="text-2xl font-bold text-gray-800">Каталог товаров</h2>
-                    <p class="text-gray-500">Все товары из Google Sheets</p>
+                    <p class="text-gray-500">Мясо и электроника</p>
                 </div>
-                <a href="https://docs.google.com/spreadsheets/d/1280bGzTHy0fOIDBvyEft0bM4p5fklbc7shg6MzviVKs/edit" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl flex items-center gap-2">
+                <a href="https://docs.google.com/spreadsheets/d/1QLWFQsqCujZ6Th5RRjtfNMmJaOKC7W56aGxxBsmJzT0/edit" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl flex items-center gap-2">
                     <i class="fas fa-plus"></i> Добавить товар
                 </a>
             </div>
 
-            <!-- Filters -->
             <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 mb-6 flex flex-wrap gap-4 items-center">
                 <div class="flex gap-2 flex-wrap">
                     <button onclick="filterProducts('all')" class="filter-btn active px-4 py-2 rounded-lg bg-emerald-600 text-white text-sm font-medium">Все</button>
-                    <button onclick="filterProducts('electronics')" class="filter-btn px-4 py-2 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 text-sm font-medium">Электроника</button>
-                    <button onclick="filterProducts('food')" class="filter-btn px-4 py-2 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 text-sm font-medium">Продукты</button>
                     <button onclick="filterProducts('meat')" class="filter-btn px-4 py-2 rounded-lg bg-red-100 text-red-600 hover:bg-red-200 text-sm font-medium">🥩 Мясо</button>
-                    <button onclick="filterProducts('clothing')" class="filter-btn px-4 py-2 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 text-sm font-medium">Одежда</button>
+                    <button onclick="filterProducts('electronics')" class="filter-btn px-4 py-2 rounded-lg bg-blue-100 text-blue-600 hover:bg-blue-200 text-sm font-medium">🔌 Электроника</button>
                 </div>
                 <button onclick="loadProducts()" class="bg-emerald-100 hover:bg-emerald-200 text-emerald-700 px-4 py-2 rounded-lg">
                     <i class="fas fa-sync-alt"></i> Обновить
                 </button>
             </div>
 
-            <div id="loading" class="text-center py-8">
-                <div class="loading mb-2"></div>
-                <p class="text-gray-500">Загрузка...</p>
-            </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="products-grid"></div>
         </section>
 
-        <!-- Sales Section -->
+        <!-- Sales -->
         <section id="sales-section" class="p-6 hidden">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div class="lg:col-span-2 bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
@@ -152,19 +216,28 @@
                 
                 products = json.table.rows.slice(1).map((row, index) => ({
                     id: parseInt(row.c[0]?.v) || index + 1,
-                    name: { ru: row.c[1]?.v || 'Без названия', kk: row.c[2]?.v || row.c[1]?.v || 'Атаусыз' },
+                    name: { 
+                        ru: row.c[1]?.v || 'Без названия', 
+                        kk: row.c[2]?.v || row.c[1]?.v || 'Атаусыз' 
+                    },
                     price: parseInt(row.c[3]?.v) || 0,
-                    category: row.c[4]?.v || 'electronics',
+                    category: row.c[4]?.v || 'meat',
                     stock: parseInt(row.c[5]?.v) || 0,
                     image: row.c[6]?.v || 'https://via.placeholder.com/400'
                 })).filter(p => p.id > 0 && p.name.ru);
 
                 document.getElementById('loading').style.display = 'none';
+                document.getElementById('stats-container').style.display = 'grid';
+                
+                // Обновляем счетчики
+                document.getElementById('meat-count').textContent = products.filter(p => p.category === 'meat').length;
+                document.getElementById('electronics-count').textContent = products.filter(p => p.category === 'electronics').length;
+                
                 renderProducts();
                 renderSaleProducts();
             } catch (error) {
                 console.error('Ошибка:', error);
-                document.getElementById('loading').innerHTML = '<p class="text-red-500">Ошибка загрузки. Проверьте Google Sheets.</p>';
+                document.getElementById('loading').innerHTML = '<p class="text-red-500">Ошибка загрузки. Проверьте доступ к Google Sheets (должно быть "Все, у кого есть ссылка")</p>';
             }
         }
 
@@ -179,7 +252,9 @@
                 card.innerHTML = `
                     <div class="relative h-48 overflow-hidden">
                         <img src="${product.image}" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400'">
-                        <span class="absolute top-3 right-3 px-2 py-1 bg-white rounded-lg text-xs font-medium">${getCategoryName(product.category)}</span>
+                        <span class="absolute top-3 right-3 px-2 py-1 bg-white rounded-lg text-xs font-medium ${product.category === 'meat' ? 'text-red-600' : 'text-blue-600'}">
+                            ${product.category === 'meat' ? '🥩 Мясо' : '🔌 Электроника'}
+                        </span>
                     </div>
                     <div class="p-4">
                         <h3 class="font-bold text-gray-800 mb-1">${product.name[currentLang]}</h3>
@@ -187,26 +262,23 @@
                             <span class="text-2xl font-bold text-emerald-600">₸${product.price.toLocaleString()}</span>
                             <span class="text-sm text-gray-500">В наличии: ${product.stock}</span>
                         </div>
-                        <button onclick="addToCart(${product.id})" class="w-full gradient-bg text-white py-2 rounded-xl">В корзину</button>
+                        <button onclick="addToCart(${product.id})" class="w-full gradient-bg text-white py-2 rounded-xl font-medium">В корзину</button>
                     </div>
                 `;
                 grid.appendChild(card);
             });
         }
 
-        function getCategoryName(cat) {
-            const names = { electronics: 'Электроника', food: 'Продукты', meat: '🥩 Мясо', clothing: 'Одежда', home: 'Для дома' };
-            return names[cat] || cat;
-        }
-
         function filterProducts(category) {
             currentFilter = category;
             document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('bg-emerald-600', 'bg-red-600', 'text-white');
+                btn.classList.remove('bg-emerald-600', 'bg-red-600', 'bg-blue-600', 'text-white');
                 btn.classList.add('bg-gray-100', 'text-gray-600');
             });
             event.target.classList.remove('bg-gray-100', 'text-gray-600');
-            event.target.classList.add(category === 'meat' ? 'bg-red-600' : 'bg-emerald-600', 'text-white');
+            if (category === 'meat') event.target.classList.add('bg-red-600', 'text-white');
+            else if (category === 'electronics') event.target.classList.add('bg-blue-600', 'text-white');
+            else event.target.classList.add('bg-emerald-600', 'text-white');
             renderProducts();
         }
 
@@ -265,7 +337,20 @@
 
         function completeSale() {
             if (cart.length === 0) return;
-            alert('Продажа оформлена! Чек №' + document.getElementById('receipt-number').textContent);
+            
+            // Формируем сообщение для WhatsApp
+            let message = 'Новый заказ:%0A%0A';
+            let total = 0;
+            cart.forEach(item => {
+                message += `${item.name.ru} - ${item.quantity} шт. × ₸${item.price} = ₸${item.price * item.quantity}%0A`;
+                total += item.price * item.quantity;
+            });
+            message += `%0AИтого: ₸${total}`;
+            
+            // Открываем WhatsApp
+            window.open(`https://wa.me/77089603833?text=${message}`, '_blank');
+            
+            alert('Заказ отправлен в WhatsApp!');
             cart = [];
             updateCart();
             document.getElementById('receipt-number').textContent = String(parseInt(document.getElementById('receipt-number').textContent) + 1).padStart(3, '0');
@@ -303,4 +388,4 @@
         document.addEventListener('DOMContentLoaded', loadProducts);
     </script>
 </body>
-</html>"Добавлена кнопка Мясо"
+</html>"Добавлены контакты и WhatsApp"
