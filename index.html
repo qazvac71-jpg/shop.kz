@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2563eb">
+<meta name="apple-mobile-web-app-capable" content="yes">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop KZ - Мясо и Электроника</title>
@@ -19,6 +22,11 @@
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
+    <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js');
+  }
+</script>
 
     <!-- Language Switcher -->
     <meta name="google-site-verification" content="googledcfa08499ef2df30" />
@@ -389,4 +397,5 @@
         document.addEventListener('DOMContentLoaded', loadProducts);
     </script>
 </body>
-</html>"Добавлены контакты и WhatsApp"
+</html>"Добавлены контакты и WhatsApp" 
+Добавлен PWA
